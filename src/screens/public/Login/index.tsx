@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import analytics from '@react-native-firebase/analytics';
 
 // Interface
 import {NestedProps} from '../../../utils/navigationProps.types';
@@ -13,7 +14,14 @@ const Login: React.FC = () => {
   const navigation = useNavigation<NestedProps>();
 
   const handlePressLogin = () => {
+    analytics().logLogin({method: 'inApp'});
+    analytics().logEvent('handlePressLoginPressed');
+    analytics().logEvent('changeRoute', {screen: 'Dashboard'});
     navigation.replace('PrivateNavigator', {screen: 'Dashboard'});
+  };
+
+  const onFocus = (type: string) => {
+    analytics().logEvent(type);
   };
 
   return (
@@ -21,12 +29,14 @@ const Login: React.FC = () => {
       <Title>AP</Title>
       <Input
         value={user}
+        onFocus={() => onFocus('InputUserFocus')}
         onChangeText={(text) => setUser(text)}
         placeholder="Usuário"
         keyboardType="email-address"
       />
       <Input
         value={pass}
+        onFocus={() => onFocus('InputPassFocus')}
         onChangeText={(text) => setPass(text)}
         placeholder="Senha"
         secureTextEntry
