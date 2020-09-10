@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
+import api from '../../../service/api';
 
 // Interface
 import {NestedProps} from '../../../utils/navigationProps.types';
@@ -13,10 +14,12 @@ const Login: React.FC = () => {
   const [pass, setPass] = useState<string>('');
   const navigation = useNavigation<NestedProps>();
 
-  const handlePressLogin = () => {
+  const handlePressLogin = async () => {
     analytics().logLogin({method: 'inApp'});
     analytics().logEvent('handlePressLoginPressed');
     analytics().logEvent('changeRoute', {screen: 'Dashboard'});
+    const {digitalHash} = await api.loginWithDigital('123aSDGUY1ASUGDU123123');
+    console.log(digitalHash);
     navigation.replace('PrivateNavigator', {screen: 'Dashboard'});
   };
 
