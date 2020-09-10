@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
+import crashlytics from '@react-native-firebase/crashlytics';
 import api from '../../../service/api';
 
 // Interface
@@ -26,6 +27,10 @@ const Login: React.FC = () => {
   const onFocus = (type: string) => {
     analytics().logEvent(type);
   };
+
+  useEffect(() => {
+    crashlytics().log('Login mounted.');
+  }, []);
 
   return (
     <Container>

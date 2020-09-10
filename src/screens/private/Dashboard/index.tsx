@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 // Interface
 import {NestedProps} from '../../../utils/navigationProps.types';
@@ -30,6 +31,10 @@ const Dashboard: React.FC = () => {
   const handlePressButton = (name: string, data: Object) => {
     analytics().logEvent(name, data);
   };
+
+  useEffect(() => {
+    crashlytics().log('Dashboard mounted.');
+  }, []);
 
   return (
     <Container>
