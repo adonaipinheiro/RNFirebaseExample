@@ -37,59 +37,69 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Title>Bem-vindo</Title>
+    <Container accessible={true} accessibilityLabel="Tela de Dashboard">
+      <Title accessibilityLabel="Bem-vindo">Bem-vindo</Title>
       <Separator />
-      <ButtonArea onPress={handlePressLogoff}>
+      <ButtonArea
+        onPress={handlePressLogoff}
+        accessibilityLabel="Botão para Sair">
         <ButtonText>Sair</ButtonText>
       </ButtonArea>
       <ButtonsArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste1', {ex: 'test 1'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 1">
           <ButtonTestText>Test 1</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste2', {ex: 'test 2'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 2">
           <ButtonTestText>Test 2</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste3', {ex: 'test 3'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 3">
           <ButtonTestText>Test 3</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste4', {ex: 'test 4'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 4">
           <ButtonTestText>Test 4</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste5', {ex: 'test 5'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 5">
           <ButtonTestText>Test 5</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste6', {ex: 'test 6'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 6">
           <ButtonTestText>Test 6</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste7', {ex: 'test 7'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 7">
           <ButtonTestText>Test 7</ButtonTestText>
         </ButtonTestArea>
         <ButtonTestArea
           onPress={() => {
             handlePressButton('teste8', {ex: 'test 8'});
-          }}>
+          }}
+          accessibilityLabel="Botão Test 8">
           <ButtonTestText>Test 8</ButtonTestText>
         </ButtonTestArea>
       </ButtonsArea>

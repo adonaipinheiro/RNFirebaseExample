@@ -33,14 +33,15 @@ const Login: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Title>AP</Title>
+    <Container accessible={true} accessibilityLabel="Tela Login">
+      <Title accessibilityLabel="Adonai Pinheiro">AP</Title>
       <Input
         value={user}
         onFocus={() => onFocus('InputUserFocus')}
         onChangeText={(text) => setUser(text)}
         placeholder="Usuário"
         keyboardType="email-address"
+        accessibilityLabel="Campo de texto para o usuário"
       />
       <Input
         value={pass}
@@ -48,8 +49,11 @@ const Login: React.FC = () => {
         onChangeText={(text) => setPass(text)}
         placeholder="Senha"
         secureTextEntry
+        accessibilityLabel="Campo de texto para a senha"
       />
-      <ButtonArea onPress={handlePressLogin}>
+      <ButtonArea
+        onPress={handlePressLogin}
+        accessibilityLabel="Pressione o botão para logar">
         <ButtonText>Entrar</ButtonText>
       </ButtonArea>
     </Container>
